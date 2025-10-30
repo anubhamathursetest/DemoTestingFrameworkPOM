@@ -1,0 +1,111 @@
+20. Automation Scope
+
+Automation testing will focus on stabilizing regression, improving test coverage, and reducing manual effort for repetitive validation across browsers and environments.
+The goal is to automate the end-to-end ticket booking flow, including all key positive and regression scenarios, while keeping complex third-party interactions (like payment gateways) simulated through mocks.
+
+20.1 Automation Objectives
+
+Ensure consistent and reliable execution of core booking flows.
+
+Reduce manual testing time for frequent releases.
+
+Improve early defect detection through CI integration.
+
+Maintain a reusable and scalable test framework.
+
+20.2 Automation Tool & Framework
+Area	Tools/Frameworks
+Automation Tool	Selenium WebDriver / Cypress
+Framework	TestNG (Java) or Mocha (JavaScript)
+Build Tool	Maven / npm
+Reporting	Extent Reports / Allure
+Execution Platform	BrowserStack / Jenkins CI
+Version Control	GitHub / GitLab
+Locator Strategy	XPath, CSS Selectors, Page Object Model (POM)
+20.3 Scope of Automation
+Area	Modules to Automate	Priority	Notes
+Smoke Tests	Launch site, select city, view movies	High	Run daily build verification
+Functional Flow	End-to-end booking: Select city → Movie → Theatre → Seats → Mock Payment → Confirmation	High	Primary regression scenario
+Seat Selection Module	Seat layout validation, seat count, total price	High	Data-driven (different seat types)
+Payment Mock Tests	Valid/invalid payments using dummy data	Medium	Use payment gateway stubs
+UI Regression	Critical UI elements validation	Medium	Visual comparison using screenshot baselines
+Search Module	Movie search autocomplete	Low	Automate only stable UI components
+Cross-browser Validation	Execute core booking flow on Chrome, Edge, Firefox	Medium	Parallel execution via BrowserStack
+Error Handling	Invalid promo, session timeout, unavailable seat	Medium	Negative case validation
+My Bookings Page	Verify confirmed booking display	Medium	Post-booking verification
+20.4 Automation Exclusions
+Excluded Area	Reason
+Third-party payment gateway live testing	Unstable external dependency
+SMS/Email verification	Tested via API stubs or manual validation
+Ad banners and popups	Non-critical for booking flow
+Captcha validation (if any)	Requires bypass configuration
+20.5 Test Case to Automation Mapping
+Manual TC ID	Description	Automation Feasibility	Remarks
+TC_01 – TC_04	Location & Movie selection	✅ Yes	Stable UI – high ROI
+TC_05 – TC_11	Theatre & Seat selection	✅ Yes	Core flow – must automate
+TC_12 – TC_16	Payment Page	⚙️ Partial	Use mocked payment APIs
+TC_17 – TC_20	Booking Confirmation	✅ Yes	Verify confirmation message & booking ID
+TC_21 – TC_25	Negative scenarios	⚙️ Partial	Automate deterministic ones only
+TC_26 – TC_29	UI/UX & Cross-browser	⚙️ Partial	Limited to layout validation
+TC_30 – TC_32	Performance	❌ No	To be covered by Load Testing tools
+20.6 Automation Architecture
+
+Proposed framework design (Selenium + TestNG):
+
+src/
+ ├── main/
+ │   ├── java/
+ │   │   ├── pages/           → Page Objects (HomePage, MoviePage, SeatPage, PaymentPage)
+ │   │   ├── utils/           → Driver setup, Config, Reporting, Waits
+ │   └── resources/
+ │       ├── config.properties → URLs, credentials
+ ├── test/
+ │   ├── java/
+ │   │   ├── tests/           → Test classes mapped to manual TC IDs
+ │   │   ├── data/            → DataProviders (city, movie, seat type)
+ │   └── reports/
+ │       ├── extent-report.html
+
+
+Design Pattern: Page Object Model (POM)
+
+Data-Driven Testing: Use TestNG DataProviders or JSON for inputs
+
+Execution: Parallel test runs across browsers via TestNG XML
+
+Reports: Extent Reports or Allure for detailed HTML summaries
+
+20.7 CI/CD Integration
+
+Automation suite integrated with Jenkins or GitHub Actions.
+
+Trigger automated tests on every build deployment.
+
+Test results auto-published to dashboard/reporting tool.
+
+20.8 Automation Deliverables
+
+Automation Test Strategy Document
+
+Test Framework Repository (POM-based)
+
+CI Pipeline Configuration
+
+Execution Reports & Logs
+
+Traceability Matrix (Manual–Automated linkage)
+
+20.9 Maintenance Plan
+
+Review and update scripts for every UI change.
+
+Revalidate locators post each release.
+
+Maintain a regression suite that runs on-demand or nightly.
+
+20.10 Automation KPIs
+Metric	Target
+Automation Coverage	≥ 70% of regression test cases
+Execution Time	≤ 20 minutes (parallel)
+Build Integration	100% on release builds
+Script Maintenance	<10% effort per sprint

@@ -1,0 +1,92 @@
+Execution Plan: Movie Ticket Booking Functionality - BookMyShow
+1–15. [As defined earlier]
+
+(Refer to the previously provided sections for Introduction, Objectives, Scope, etc.)
+
+16. Detailed Test Cases
+
+Below is a comprehensive list of functional and negative test cases that cover the end-to-end movie booking flow.
+
+16.1 Location & Movie Listing
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_01	Verify user can select location	Homepage loads	1. Launch BookMyShow
+2. Select location from dropdown or location popup	Selected location should be displayed and saved in session
+TC_02	Verify list of movies displayed after selecting location	Location selected	1. Choose city
+2. Observe movies displayed	Movies available in that city should appear
+TC_03	Verify “Search Movie” functionality	Homepage loaded	1. Type a movie name in search bar
+2. Click search	Matching movie titles appear in dropdown
+TC_04	Verify that clicking a movie opens its details page	Movie available	1. Select a movie card
+2. Click it	Movie detail page opens with showtimes
+16.2 Theatre and Showtime Selection
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_05	Verify available theatres and showtimes are displayed	Movie details page	1. Select date
+2. View theatre list	Theatres and showtimes are listed correctly
+TC_06	Verify that selecting a theatre opens seat layout	Showtimes available	1. Click on a showtime
+2. Observe navigation	Seat layout page opens for selected show
+TC_07	Verify movie details (name, language, format) are displayed	On seat layout page	1. View booking summary panel	Correct movie name, language, format, and time are displayed
+16.3 Seat Selection
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_08	Verify that seats can be selected	Seat layout visible	1. Select 2 available seats
+2. Proceed	Selected seats highlighted and price updated
+TC_09	Verify that unavailable seats cannot be selected	Some seats greyed out	1. Attempt to click unavailable seats	Seats remain unselected; proper tooltip shown
+TC_10	Verify that seat count matches booking summary	Seats selected	1. Count seats selected
+2. Compare with summary	Total seats and price match
+TC_11	Verify that user cannot proceed without selecting a seat	Seat layout open	1. Click “Proceed” without selecting seat	Error message prompts user to select seat
+16.4 Payment Page
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_12	Verify that payment options are displayed	After seat selection	1. Proceed to payment page	Payment options (Credit/Debit/UPI/Wallets) shown
+TC_13	Verify that total amount displayed includes taxes and convenience fee	Payment page	1. Review fare breakdown	Total includes base price + convenience fee
+TC_14	Verify successful payment with valid card	Valid card data	1. Enter valid details
+2. Submit payment	Payment success page displayed
+TC_15	Verify payment failure scenario	Invalid card	1. Enter incorrect card number
+2. Submit	Error message displayed; transaction not completed
+TC_16	Verify session timeout during payment	Idle for 10+ mins	1. Stay idle
+2. Attempt payment	System logs out or redirects to start page with message
+16.5 Booking Confirmation
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_17	Verify booking confirmation page is displayed	Successful payment	1. Complete payment	Confirmation screen with booking ID and summary appears
+TC_18	Verify that confirmation email and SMS are sent	Payment successful	1. Check registered email/SMS	Booking confirmation with ticket details received
+TC_19	Verify “View Ticket” option in My Bookings	Logged-in user	1. Go to profile > My Bookings
+2. Click recent booking	Ticket details displayed with QR code
+TC_20	Verify that cancelled booking is updated in system	Booking confirmed	1. Click “Cancel Booking” (if allowed)
+2. Confirm action	Booking marked as cancelled and refund initiated
+16.6 Negative Scenarios
+TC ID	Test Case Description	Precondition	Test Steps	Expected Result
+TC_21	Verify message when all seats are booked	Popular show	1. Try selecting booked showtime	“Housefull” message displayed
+TC_22	Verify system behavior on double booking	Same seat booked by another user	1. Book same seat simultaneously	System allocates to first user only; error for second
+TC_23	Verify invalid promo code handling	Promo field present	1. Apply invalid promo code	Error message “Invalid/Expired Code” shown
+TC_24	Verify retry behavior after payment failure	Payment failed	1. Click retry payment	User can retry with same or new method
+TC_25	Verify behavior on browser refresh during booking	During seat/payment	1. Refresh page	Session either maintained or redirected properly
+16.7 UI/UX and Cross-Browser Tests
+TC ID	Test Case Description	Steps	Expected Result
+TC_26	Verify responsive layout on mobile	Open on mobile browser	Layout adjusts properly without overlapping elements
+TC_27	Verify consistency across browsers	Open site in Chrome, Firefox, Edge	UI and functionality consistent
+TC_28	Verify accessibility standards (alt text, color contrast)	Inspect UI	Meets WCAG 2.0 compliance
+TC_29	Verify error message clarity	Trigger any negative case	Messages are clear and user-friendly
+16.8 Performance and Load Scenarios (High-Level)
+TC ID	Test Case Description	Expected Result
+TC_30	Verify page load time for home page	Page loads within 3 seconds
+TC_31	Verify seat layout load time	Layout loads within 2 seconds
+TC_32	Verify booking flow under load (10 concurrent users)	System handles concurrent booking gracefully without timeout
+17. Traceability Matrix (Sample)
+Requirement ID	Description	Test Case IDs
+R1	City & movie selection	TC_01 – TC_04
+R2	Theatre & showtime selection	TC_05 – TC_07
+R3	Seat booking functionality	TC_08 – TC_11
+R4	Payment and confirmation	TC_12 – TC_20
+R5	Negative and error handling	TC_21 – TC_25
+18. Reporting & Metrics
+
+Test Execution Status: Pass/Fail per TC
+
+Defect Metrics: Severity, Priority, Reopen Rate
+
+Coverage Metrics: Requirement vs Test Case mapping
+
+19. Test Closure
+
+All high-severity defects closed.
+
+Test Summary Report delivered.
+
+Sign-off from QA and Product teams.
