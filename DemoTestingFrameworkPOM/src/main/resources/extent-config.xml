@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ExtentReportsSuite" verbose="1">
+    <listeners>
+        <listener class-name="com.example.utils.ExtentManager"/>
+    </listeners>
+    <test name="Automation Tests">
+        <reporter type="extent" />
+        <classes>
+            <class name="com.example.tests.TC_01_LocationSelectionTest"/>
+            <class name="com.example.tests.TC_02_MovieSelectionTest"/>
+            <class name="com.example.tests.TC_03_ViewMoviesTest"/>
+            <class name="com.example.tests.TC_04_SmokeSuite"/>
+            <class name="com.example.tests.TC_05_TheatreSelectionTest"/>
+            <class name="com.example.tests.TC_06_SeatSelectionTest"/>
+            <class name="com.example.tests.TC_11_EndToEndBookingTest"/>
+            <class name="com.example.tests.TC_17_BookingConfirmationTest"/>
+            <class name="com.example.tests.TC_18_ConfirmBookingIDTest"/>
+            <class name="com.example.tests.TC_19_PostBookingDisplayTest"/>
+        </classes>
+    </test>
+</suite>

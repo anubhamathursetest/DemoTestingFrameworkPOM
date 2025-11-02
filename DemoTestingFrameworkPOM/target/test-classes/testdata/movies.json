@@ -1,0 +1,69 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Movie A",
+      "genre": "Action",
+      "duration": 120,
+      "rating": 8.5,
+      "showtimes": [
+        "10:00 AM",
+        "1:00 PM",
+        "4:00 PM",
+        "7:00 PM"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Movie B",
+      "genre": "Comedy",
+      "duration": 90,
+      "rating": 7.0,
+      "showtimes": [
+        "11:00 AM",
+        "2:00 PM",
+        "5:00 PM",
+        "8:00 PM"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Movie C",
+      "genre": "Drama",
+      "duration": 150,
+      "rating": 9.0,
+      "showtimes": [
+        "12:00 PM",
+        "3:00 PM",
+        "6:00 PM",
+        "9:00 PM"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Movie D",
+      "genre": "Horror",
+      "duration": 105,
+      "rating": 6.5,
+      "showtimes": [
+        "10:30 AM",
+        "1:30 PM",
+        "4:30 PM",
+        "7:30 PM"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Movie E",
+      "genre": "Sci-Fi",
+      "duration": 130,
+      "rating": 8.0,
+      "showtimes": [
+        "11:30 AM",
+        "2:30 PM",
+        "5:30 PM",
+        "8:30 PM"
+      ]
+    }
+  ]
+}
